@@ -1,10 +1,10 @@
 # Simple Customer API
 ### API Diagram:
-<img src="https://user-images.githubusercontent.com/72955075/150661469-3635394b-d37b-490b-a67c-ee103092b63b.png" alt="drawing" width="800"/>
+<img src="https://user-images.githubusercontent.com/72955075/150661534-8ab90a63-5979-4d7e-9f7b-cb17ef527183.png" alt="drawing" width="800"/>
 
 
 
-#### Receives a `GET` request from a client which contains customer information:
+#### Sample of GET request:
 ```python
 # sample format of get request
 {
@@ -14,7 +14,7 @@
 }
 ```
 
-#### Returns the "CustomerID" if the customer exists in the CSV file, or creates a new customer in the CSV file if they don't exist and then returns the new CustomerID:
+#### Sample API Response:
 ```python
 # sample response if customer already exists
 {
