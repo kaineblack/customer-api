@@ -17,9 +17,9 @@ parser.add_argument('PhoneNumber', type=int, required=True, help="You must enter
 # create a customer class that takes care of the get requests as they come in
 class Customer(Resource):
     """
-    API resource that responds to a GET request which includes a customers first name, 
-    last name, and phone number this class will respond to GET requests and return the 
-    corresponding "CustomerID" for that customer profile. If the customer profile does 
+    API resource that responds to a GET request which includes a customers first name,
+    last name, and phone number this class will respond to GET requests and return the
+    corresponding "CustomerID" for that customer profile. If the customer profile does
     not exist in the CSV file, it will be created and the new "CustomerID" will be returned.
 
     Attributes
@@ -31,7 +31,7 @@ class Customer(Resource):
     PhoneNumber: int
         phone number of the customer (10 digits)
     Customers: pd.DataFrame
-        all current customers 
+        all current customers
 
     Methods
     -------
@@ -40,25 +40,25 @@ class Customer(Resource):
     """
     def __init__(self):
         """
-        Parse all of the provided information from the GET request.
-        Also loads in the current state of the customers CSV file to be evaluated.
+        Parse all of the provided information from the GET request. Also loads in the 
+        current state of the customers CSV file to be evaluated.
         """
-        self.__FName = parser.parse_args().get('FName', None)   # first name
-        self.__LName = parser.parse_args().get('LName', None)   # last name
-        self.__PhoneNumber = parser.parse_args().get('PhoneNumber', None)   # phone number
-        assert len(str(self.__PhoneNumber)) == 10, 'PhoneNumber must be 10 digits long' # check phone number length
-        self.__Customers = pd.read_csv('customers.csv') # load in current state of CSV file
+        self.__FName = parser.parse_args().get('FName', None)  # first name
+        self.__LName = parser.parse_args().get('LName', None)  # last name
+        self.__PhoneNumber = parser.parse_args().get('PhoneNumber', None)  # phone number
+        assert len(str(self.__PhoneNumber)) == 10, 'PhoneNumber must be 10 digits long'  # check phone number length
+        self.__Customers = pd.read_csv('customers.csv')  # load in current state of CSV file
 
     def get(self):
         """
         Responds to GET request with CustomerID. If the customer does not exist already, adds them to the CSV file 
-        and creates CustomerID for them and returns that. Also returns a bool value to indicate if the customer
+        and creates CustomerID for them and returns that. Also returns a "NewCustomer" boolean to indicate if the customer
         was a new customer or an existing customer.
 
         Returns
         -------
         dict:
-            A JSON serializable dict containing the CustomerID and NewCustomer indicator.
+            A dict containing the CustomerID and NewCustomer indicator.
         """
 
         # check to see if the phone number already exists in the CSV file 
@@ -80,8 +80,8 @@ class Customer(Resource):
 
 
 # add the Customer class as an API resource on the root URL
-api.add_resource(Customer, '/')
+api.add_resource(Customer, '/customers/')
 
 # run the application if it is being executed directly
 if __name__ == "__main__":
-  app.run(debug=True)
+    app.run(debug=True)
