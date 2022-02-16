@@ -1,5 +1,6 @@
-# Simple Customer API
-Hi there! 👋🏼  
+# Simple Flask API
+Hi there! 👋🏼 
+
 This repository contains a simple API built using the Flask framework. The API is used to check customer information against a customer database. A user will send a GET request which contains a payload of the users first name, last name, and phone number. The API will check the information provided against a CSV file containing all of the current customers, and if the customer exists will respond with the customer id. If the customer is not yet in the CSV file, it will add them to the file and return a newly created customer id for that individual with an indicator that they were newly created.
 
 ### API Diagram:
